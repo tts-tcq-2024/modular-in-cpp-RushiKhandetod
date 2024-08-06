@@ -27,4 +27,4 @@ namespace TelCoColorCoder {
 
 } // namespace TelCoColorCoder
 
-#endif // COLORCODER_HPP
+#endif // COLOURCODER_HPP
