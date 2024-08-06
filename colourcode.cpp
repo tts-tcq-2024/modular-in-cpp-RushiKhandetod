@@ -1,32 +1,20 @@
-#include "ColorCode.h"
 #include <iostream>
-#include <sstream>
-#include <iomanip>
+#include <stdexcept>
+#include "colorcoder.hpp"
 
 namespace TelCoColorCoder {
+
     const char* MajorColorNames[] = { "White", "Red", "Black", "Yellow", "Violet" };
-    int numberOfMajorColors = sizeof(MajorColorNames) / sizeof(MajorColorNames[0]);
     const char* MinorColorNames[] = { "Blue", "Orange", "Green", "Brown", "Slate" };
-    int numberOfMinorColors = sizeof(MinorColorNames) / sizeof(MinorColorNames[0]);
-
-    ColorPair::ColorPair(MajorColor major, MinorColor minor) : majorColor(major), minorColor(minor) {}
-
-    MajorColor ColorPair::getMajor() const {
-        return majorColor;
-    }
-
-    MinorColor ColorPair::getMinor() const {
-        return minorColor;
-    }
 
     std::string ColorPair::ToString() const {
-        std::string colorPairStr = MajorColorNames[majorColor];
-        colorPairStr += " ";
-        colorPairStr += MinorColorNames[minorColor];
-        return colorPairStr;
+        return std::string(MajorColorNames[majorColor]) + " " + MinorColorNames[minorColor];
     }
 
     ColorPair GetColorFromPairNumber(int pairNumber) {
+        if (pairNumber < 1 || pairNumber > numberOfMajorColors * numberOfMinorColors) {
+            throw std::out_of_range("Pair number out of range");
+        }
         int zeroBasedPairNumber = pairNumber - 1;
         MajorColor majorColor = (MajorColor)(zeroBasedPairNumber / numberOfMinorColors);
         MinorColor minorColor = (MinorColor)(zeroBasedPairNumber % numberOfMinorColors);
@@ -37,12 +25,4 @@ namespace TelCoColorCoder {
         return major * numberOfMinorColors + minor + 1;
     }
 
-    std::string GetColorCodeReferenceManual() {
-        std::ostringstream oss;
-        for (int i = 1; i <= numberOfMajorColors * numberOfMinorColors; ++i) {
-            ColorPair colorPair = GetColorFromPairNumber(i);
-            oss << std::setw(2) << i << " | " << colorPair.ToString() << "\n";
-        }
-        return oss.str();
-    }
-}
+} // namespace TelCoColorCoder
