@@ -1,5 +1,5 @@
-#ifndef COLORCODER_HPP
-#define COLORCODER_HPP
+#ifndef COLOURCODER_HPP
+#define COLOURCODER_HPP
 
 #include <string>
 
