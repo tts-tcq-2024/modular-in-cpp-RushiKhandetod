@@ -1,6 +1,6 @@
 #include <iostream>
 #include <stdexcept>
-#include "colorcoder.hpp"
+#include "colourcoder.hpp"
 
 namespace TelCoColorCoder {
 
