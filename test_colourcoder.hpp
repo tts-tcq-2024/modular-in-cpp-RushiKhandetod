@@ -1,7 +1,7 @@
-#ifndef TEST_COLORCODER_HPP
-#define TEST_COLORCODER_HPP
+#ifndef TEST_COLOURCODER_HPP
+#define TEST_COLOURCODER_HPP
 
-#include "colorcoder.hpp"
+#include "colourcoder.hpp"
 
 void testNumberToPair(int pairNumber,
                       TelCoColorCoder::MajorColor expectedMajor,
@@ -11,4 +11,4 @@ void testPairToNumber(TelCoColorCoder::MajorColor major,
                       TelCoColorCoder::MinorColor minor,
                       int expectedPairNumber);
 
-#endif // TEST_COLORCODER_HPP
+#endif // TEST_COLOURCODER_HPP
